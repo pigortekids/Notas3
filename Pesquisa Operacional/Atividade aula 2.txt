@@ -1,0 +1,15 @@
+Variáveis de Decisão:
+Gi -> quantidade de barris de petrôleo do tipo i para produzir gasolina
+Oi -> quantidade de barris de petrôleo do tipo i para produzir óleo
+i = (1,2)
+
+Função Objetivo:
+Max F = 24,8 * (G1 + G2) + 19,9 * (O1 + O2)
+
+Restrições:
+(10*G1 + 5*G2)/15 >= 8
+(10*O1 + 5*O2)/15 >= 6
+G1 + O1 <= 5000
+G2 + O2 <= 10000
+Gi,Oi >= 0 para i = 1,2
+Gi,Oi pertencem ao conjunto dos numeros inteiros para i= 1,2

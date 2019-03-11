@@ -1,0 +1,27 @@
+1 - Identificação
+Nome: Igor Amaral Correa
+Número de matrícula: 15.00588-7
+Curso: Engenharia da Computação
+Série: 5º ano letivo
+Nome da Empresa Concedente do Estágio: Citibank(CIEE)
+Departamento (s) onde o aluno estagiou: Treasury and Trade Solution Operations Client Support (TTS OPS Client Support)
+Nome do Supervisor (Empresa): Rodrigo Magri / Luciano Moraes
+Nome do Orientador/ Avaliador (Prof. Escola): N/A
+
+2 - Apresentação da Empresa
+Pequeno histórico: Citibank é um banco internacional fundado em 1812 como City Bank of New York. No Brasil, atualmente, trabalha apenas com pessoas jurídicas.
+Ramo de Atividades: Citibank por ser um banco, trabalha com a área financeira.
+Linha de Produtos: Cartões de crédito, contrato de mútuo, personal loans, commercial loans, entre outros.
+Porte e posição no mercado (opcional): Em 2016 Citibank estava em 8º lugar entre os maiores bancos do mundo.
+Controle Acionário (opcional): N/A
+Empresas Coligadas ou subsidiárias (opcional): N/A
+Departamento onde o estágio foi realizado e sua interligação com os outros deptos da Empresa (organograma): TTS OPS trabalha mais com a parte operacional, tratando das operações necessárias para realizar as vendas feitas por TTS (continuar)
+
+3 - Relatório propriamente dito
+Descrição sucinta de todas as atividades desenvolvidas no estágio (não é relação de atividades): Manutenção/Melhorias/Suporte de programas usados internamente, desenvolvimento de projetos de BI, otimização de processos operacionais.
+Descrição detalhada de uma atividade. Descrever detalhadamente uma atividade anexando desenhos, memórias de cálculo, planilhas, listagens de computador que eventualmente tenham sido utilizadas: N/A
+Comentários Finais: Avaliação do estágio e das atividades desenvolvidas: Acredito que aprendi muito por conta de estar diariamente aplicando conceitos de programação e projetos nas minhas atividades.
+Assinatura do Supervisor, Responsável com a respectiva identificação profissional, no corpo do relatório; Assinatura do aluno Estagiário; Bibliografia, se houver: N/A
+
+O processo deverá ser apresentado em pasta, contendo: relatório, declaração de horas e plano de atividades, já aprovado pelo Departamento da Escola
+A entrega será feita à Coordeandoria de Estágios Supervisionados para o encaminhamento ao Prof .Orientador/ Avaliador para Análise.
