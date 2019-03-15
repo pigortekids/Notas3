@@ -1,0 +1,86 @@
+mkdir export
+cd export
+mkdir comp
+mkdir diretoria
+mkdir vendas
+mkdir vendas/comp
+mkdir vendas/ger
+mkdir admin
+mkdir admin/comp
+mkdir admin/ger
+mkdir eng
+mkdir eng/comp
+mkdir eng/ger
+apt-get update
+apt-get install tree
+tree
+
+groupadd vendas
+groupadd admin
+groupadd eng
+groupadd labredes
+getent group
+
+mkdir /home/labredes
+useradd -m igor1 -g labredes -G vendas -c "Gerente Vendas" -d /home/labredes/igor1
+useradd -m igor11 -g labredes -G vendas -c "Usuario Vendas" -d /home/labredes/igor11
+useradd -m igor2 -g labredes -G admin -c "Gerente Administrativo" -d /home/labredes/igor2
+useradd -m igor21 -g labredes -G admin -c "Usuario Administrativo" -d /home/labredes/igor21
+useradd -m igor3 -g labredes -G eng -c "Gerente Engenharia" -d /home/labredes/igor3
+useradd -m igor31 -g labredes -G eng -c "Usuario Engenharia" -d /home/labredes/igor31
+getent group
+cat /etc/passwd
+cat /etc/shadow
+
+passwd igor1
+passwd igor11
+passwd igor2
+passwd igor21
+passwd igor3
+passwd igor31
+cat /etc/shadow
+
+chown root.labredes /export
+chown root.labredes /export/diretoria
+chown root.labredes /export/comp
+chown root.vendas /export/vendas
+chown root.vendas /export/vendas/comp
+chown igor1.vendas /export/vendas/ger
+chown root.admin /export/admin
+chown root.admin /export/admin/comp
+chown igor2.admin /export/admin/ger
+chown root.eng /export/eng
+chown root.eng /export/eng/comp
+chown igor3.eng /export/eng/ger
+
+chmod 750 /export
+chmod 750 /export/diretoria
+chmod 770 /export/comp
+chmod 750 /export/vendas
+chmod 770 /export/vendas/comp
+chmod 750 /export/vendas/ger
+chmod 750 /export/admin
+chmod 770 /export/admin/comp
+chmod 750 /export/admin/ger
+chmod 750 /export/eng
+chmod 770 /export/eng/comp
+chmod 750 /export/eng/ger
+
+su -l igor1
+cd /export/vendas/ger
+touch arquivo1.txt
+su -l igor11
+cd /export/vendas/ger
+touch arquivo2.txt
+su -l igor2
+cd /export/vendas/ger
+touch arquivo1.txt
+su -l igor21
+cd /export/vendas/ger
+touch arquivo2.txt
+su -l igor3
+cd /export/vendas/ger
+touch arquivo1.txt
+su -l igor31
+cd /export/vendas/ger
+touch arquivo2.txt
