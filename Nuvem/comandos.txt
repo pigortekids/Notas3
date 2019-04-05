@@ -1,0 +1,7 @@
+docker container ls
+docker container ls -a
+docker container create --name NOMECONTAINER NOMEIMAGEM
+docker rm NOMECONTAINER
+docker run --name NOMECONTAINER mysql
+docker network create NOMENET
+docker connect NOMENET NOMECONTAINER
