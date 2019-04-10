@@ -4,4 +4,13 @@ docker container create --name NOMECONTAINER NOMEIMAGEM
 docker rm NOMECONTAINER
 docker run --name NOMECONTAINER mysql
 docker network create NOMENET
-docker connect NOMENET NOMECONTAINER
+docker network connect NOMENET NOMECONTAINER
+docker network inspect NOMENET
+docker network rm NOMENET
+docker attach NOMECONTAINER
+
+
+
+
+mysql e phpmyadmin:
+https://medium.com/coderscorner/connecting-to-mysql-through-docker-997aa2c090cc
