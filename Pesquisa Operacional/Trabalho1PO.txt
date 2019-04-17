@@ -1,0 +1,159 @@
+Igor Correa 15.00588-7
+
+Ex1
+{
+Variaveis de decisão:
+Kl = qnt de kilos de latinha de refrigerante
+Kg = qnt de kilos de garrafa de resina plástica PET
+
+Função Objetivo:
+Max z = (Kl * 3.0) + (Kg * 5.0)
+
+Restrições:
+(Kl * 0.1) + (Kg * 0.3) <= 2,4
+Kl + Kg <= 20
+Kl, Kg >= 0
+}
+
+
+
+Ex2
+{
+Variaveis de decisão:
+M = qnt de pacotes de Monarca
+Y = qnt de pacotes de Yarabitã
+
+Função Objetivo:
+Max z = (M * (2.80 - 0.25 - (2.0 * 0.20) - (3.00 * 0.50))) + (Y * (2.00 - 0.20 - (3.00 * 0.20) - (1.50 * 0.50)))
+Max z = (M * 0.65) + (Y * 0.45)
+
+Restrições:
+(M * 2.00) + (Y * 3.00) <= 400.00
+(M * 3.00) + (Y * 1.50) <= 300.00
+M <= 90
+M, Y >= 0
+}
+
+
+
+Ex3
+{
+Variaveis de decisão:
+Pi = carga no ponto i (i = 1, 2, 3, 4, 5)
+Tj = tensão no cabo j (j = 1, 2, 3, 4)
+
+Função Objetivo:
+Max z = somatoria de i indo de 1 a 5 de Pi
+
+Restrições:
+(0.75 * P1) + (0.50 * P2) + (0.25 * T3) = T1
+(0.25 * P1) + (0.50 * P2) + (0.75 * T3) = T2
+(0.75 * P3) + (0.50 * P4) + (0.25 * P5) = T3
+(0.25 * P3) + (0.50 * P4) + (0.75 * P5) = T4
+T1 <= 100.00
+T2 <= 300.00
+T3 <= 250.00
+T4 <= 200.00
+Pi, Tj >= 0
+}
+
+
+
+Ex4
+{
+z x1 x2 s1 s2  b
+1 -3 -5  0  0  0
+0  3  2  1  0  36
+0  3  5  0  1  45
+
+entra x2 sai s2
+
+z x1  x2 s1   s2  b
+1  0   0  0    1  45
+0 1.8  0  1 -0.4  6
+0 0.6  1  0  0.2  15
+
+x1 = 0
+x2 = 15
+z = 45
+}
+
+
+
+Ex5
+{
+z x1 x2 s1 s2 s3  b
+1 -1  1  0  0  0  0
+0  1  1  1  0  0  6
+0  1 -1  0  1  0  0
+0 -1  1  0  0  1  3
+
+entra x1 sai s1
+
+z x1 x2 s1 s2 s3  b
+1  0  0  0  1  0  0
+0  0  2  1 -1  0  6
+0  1 -1  0  1  0  0
+0  0  0  0  1  1  3
+
+x1 = 0
+x2 = 0
+z = 0
+}
+
+
+
+Ex6
+{
+z x1 x2 x3 s1 s2 s3  b
+1 -2  1 -1  0  0  0  0
+0  3  1  1  1  0  0  60
+0  1 -1  2  0  1  0  10
+0  1  1 -1  0  0  1  20
+
+entra x1 sai s2
+
+z x1 x2 x3 s1 s2 s3  b
+1  0 -1  3  0  2  0  20
+0  0  4 -5  1 -3  0  30
+0  1 -1  2  0  1  0  10
+0  0  2 -3  0 -1  1  10
+
+entra x2 sai s3
+
+z x1 x2   x3 s1   s2  s3  b
+1  0  0  1.5  0  1.5 0.5  25
+0  0  0    1  1   -1  -2  10
+0  1  0  0.5  0  0.5 0.5  15
+0  0  1 -1.5  0 -0.5 0.5  5
+
+x1 = 10
+x2 = 15
+x3 = 5
+z = 25
+}
+
+
+
+Ex7
+{
+z x1 x2 s1 s2 s3 s4  b
+1 -4 -3  0  0  0  0  0
+0  1  3  1  0  0  0  7
+0  2  2  0  1  0  0  8
+0  1  1  0  0  1  0  3
+0  0  1  0  0  0  1  2
+
+entra x1 sai s3
+
+z x1 x2 s1 s2 s3 s4  b
+1  0  1  0  0  4  0  12
+0  0  2  1  0 -1  0  4
+0  0  0  0  1 -2  0  2
+0  1  1  0  0  1  0  3
+0  0  1  0  0  0  1  2
+
+x1 = 3
+x2 = 0
+z = 12
+}

@@ -4,4 +4,17 @@ docker run --name=mysql --net rede -e MYSQL_ROOT_PASSWORD=root -d mysql
 docker run --name=html --net rede -d tonisormisson/dev-lemp
 docker run --name=consulta --net rede -d mattrayner/lamp
 docker run --name=autenticacao --net rede -d mattrayner/lamp
-docker run --name myadmin -d --link mysql:db -p 8080:80 phpmyadmin/phpmyadmin
+
+
+
+
+
+
+mysql -uroot -p
+lemp var/www/html/index.php
+lamp app/index.php
+
+
+echo "Olá Mundo" > arquivo.txt
+cat arquivo.txt
+cat > arquivo.txt
