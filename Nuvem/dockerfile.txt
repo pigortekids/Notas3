@@ -1,10 +1,9 @@
 docker login
 docker network create rede
 docker run --name=mysql --net rede -e MYSQL_ROOT_PASSWORD=root -d mysql
-docker run --name=html --net rede -d tonisormisson/dev-lemp
+docker run --name=html --net rede -d mattrayner/lamp
 docker run --name=consulta --net rede -d mattrayner/lamp
-docker run --name=autenticacao --net rede -d mattrayner/lamp
-
+docker run --name=autenticacao --net rede -d tonisormisson/dev-lemp
 
 
 
@@ -18,3 +17,6 @@ lamp app/index.php
 echo "Olá Mundo" > arquivo.txt
 cat arquivo.txt
 cat > arquivo.txt
+
+
+docker run --name=html --net rede --mount source=volumeteste,target=/app -d tonisormisson/dev-lemp

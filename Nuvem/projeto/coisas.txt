@@ -1,0 +1,8 @@
+Tentei usar o kitematic para acessar os arquivos pelo windows, mas a pasta que ele acessa parecia não ser a certa do dashboard do apache
+Tentei fazer requisições pelo Postman pelos IPs que ele gera no windows (ipconfig) com o VirtualBox
+Tentei achar a pasta do dashboard do apache no linux dos containers
+Procurei como fazer containers se comunicarem atravez de uma rede
+
+
+Escolhemos usar o lemp na autenticação por aguentar mais requisições ao mesmo tempo que o lamp, pensando que qualquer coisa iria passar pela autenticação.
+Usamos apenas uma tabela no mysql que seria a de livros.
