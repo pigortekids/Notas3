@@ -1,6 +1,8 @@
 Tentei usar o kitematic para acessar os arquivos pelo windows, mas a pasta que ele acessa parecia não ser a certa do dashboard do apache
 Tentei fazer requisições pelo Postman pelos IPs que ele gera no windows (ipconfig) com o VirtualBox
 Tentei achar a pasta do dashboard do apache no linux dos containers
+Tentei configurar as portas e ficava dando erro:
+	"Error response from daemon: driver failed programming external connectivity on endpoint : Error starting userland proxy: mkdir /port/tcp:0.0.0.0:3010:tcp:172.18.0.3:80: input/output error."
 Procurei como fazer containers se comunicarem atravez de uma rede
 
 

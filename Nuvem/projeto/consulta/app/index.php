@@ -1,7 +1,7 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use controller\Controller;
+use app\controller\Controller;
 
 require_once 'config.php';
 
