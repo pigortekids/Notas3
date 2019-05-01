@@ -19,4 +19,7 @@ cat arquivo.txt
 cat > arquivo.txt
 
 
+mysql -u root -p
+root
+
 docker run --name=html --net rede --mount source=volumeteste,target=/app -d tonisormisson/dev-lemp
