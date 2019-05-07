@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+MAINTAINER pigortekids <igor.a.correa@hotmail.com>
+
+RUN apt-get update
+RUN apt-get install
+RUN apt-get -y install apache2
+
+RUN mkdir app
+
+VOLUME ["/var/www"]
+
+EXPOSE 80

@@ -1,0 +1,49 @@
+﻿docker login
+docker network create rede
+docker run --name=consulta --net rede -p 8080:80 -d mattrayner/lamp
+docker run --name=autenticacao --net rede -p 8081:80 -d stenote/docker-lemp
+docker run --name=html --net rede -p 8082:80 -d mattrayner/lamp
+docker run --name=mysql --net rede -p 33060:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql
+docker run --name=mysql --net rede -p 33060:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+
+docker build -t teste .
+
+consulta -> 172.18.0.2
+autenticacao -> 172.18.0.3
+html -> 172.18.0.4
+mysql -> 172.18.0.5
+-p portamaquina:portadocker
+
+
+apt-get update
+apt-get install
+apt-get net-tools para ping
+apt-get install iputils-ping
+apt-get install vim
+
+
+echo "Olá Mundo" > arquivo.txt
+cat arquivo.txt
+cat > arquivo.txt
+
+
+mysql -u root -p
+root
+
+mysqladmin -u root -p'root' password ''
+mysql -u root
+CREATE DATABASE livraria;
+USE livraria;
+CREATE TABLE `tbl_livro` (`id_livro` int(11) NOT NULL, `nome` varchar(45) NOT NULL, `autor` varchar(45) NOT NULL, `genero` varchar(45) NOT NULL);
+ALTER TABLE `tbl_livro` ADD PRIMARY KEY (`id_livro`);
+ALTER TABLE `tbl_livro` MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+INSERT INTO `tbl_livro` (`id_livro`, `nome`, `autor`, `genero`) VALUES (NULL, 'Livro1', 'Autor1', 'Genero1'), (NULL, 'Livro2', 'Autor2', 'Genero2'), (NULL, 'Livro3', 'Autor3', 'Genero3'), (NULL, 'Livro4', 'Autor4', 'Genero4'), (NULL, 'Livro5', 'Autor5', 'Genero5');
+
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'senha';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
+
+
+docker run --name=autenticacao --net rede --mount source=volume,target=/app -p 8081:80 -d tonisormisson/dev-lemp
+docker run --name=autenticacao --net rede -p 8081:80 -d tonisormisson/dev-lemp

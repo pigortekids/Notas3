@@ -1,18 +1,18 @@
-
+/*
 document.getElementById("butaumLivros").addEventListener("click", function(){
     var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-        /*if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState == 4 && this.status == 200) {
 			var jaison = JSON.parse(xhttp.responseText);
 			console.log(xhttp.responseText)
-		*/}
+		}
 	};
-	xhttp.open("GET", "http://localhost:8081/public/index.php");
-	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.open("GET", "http://localhost:8081/public/index.php/v1/livro");
+	//xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send();
 });
+*/
 
-/*
 document.getElementById("butaumLivros").addEventListener("click", function(){
     var colunas = ["Nome", "Autor", "Genero"];
     geraTabela("livro", colunas);
@@ -62,7 +62,7 @@ function geraTabela(elemento, colunas)
         //}
     };
 
-    xhttp.open("GET", "http://localhost:8081/index.php/v1/livro");
-    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.open("GET", "http://localhost:8081/public/index.php/v1/livro");
+    //xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send();
-}*/
+}
