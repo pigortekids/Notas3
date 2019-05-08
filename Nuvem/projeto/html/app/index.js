@@ -49,7 +49,7 @@ function geraTabela(elemento, colunas)
     };
 
     var senha = document.getElementById('senha').value;
-    xhttp.open('GET', 'http://localhost:8081/public/index.php/v1/livro/' + senha);
+    xhttp.open('GET', 'http://192.168.99.100:8081/public/index.php/v1/livro/' + senha);
     //xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send();
 }
