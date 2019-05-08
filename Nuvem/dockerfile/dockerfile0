@@ -1,9 +1,12 @@
-FROM debian:latest
+FROM ubuntu:latest
+
 MAINTAINER pigortekids <igor.a.correa@hotmail.com>
 
-RUN apt-get -y update
+RUN apt-get update
+RUN apt-get install
 RUN apt-get -y install apache2
-RUN apt-get -y install vim
+
+RUN mkdir app
 
 VOLUME ["/var/www"]
 

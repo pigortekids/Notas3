@@ -1,6 +1,10 @@
 ﻿docker login
 docker network create rede
 docker run --name=consulta --net rede -p 8080:80 -d mattrayner/lamp
+docker run --name=autenticacao --net rede -p 8081:80 -d mattrayner/lamp
+docker run --name=html --net rede -p 8082:80 -d teste /usr/sbin/apache2ctl -D FOREGROUND
+docker run --name=mysql --net rede -p 33060:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql:5.6
+
 docker run --name=autenticacao --net rede -p 8081:80 -d stenote/docker-lemp
 docker run --name=html --net rede -p 8082:80 -d mattrayner/lamp
 docker run --name=mysql --net rede -p 33060:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql
