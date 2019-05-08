@@ -14,15 +14,16 @@ $c = $app->getContainer();
 unset($c['phpErrorHandler']);
 
 $app->group('/v1',function ( ) {
-	$this->get('/livro', function (Request $request, Response $response, array $args) {
+	$this->get('/livro/{senha}', function (Request $request, Response $response, array $args) {
 		$url = 'http://172.18.0.2/public/index.php/v1/livro';
 		$contents = file_get_contents($url);
-		if($contents !== false){
+		$senha = $args["senha"];
+		if($contents !== false && $senha == "root"){
 			return $response->write($contents)->withStatus(200);
 		}else{
 			return $response->write("PROBLEMA")->withStatus(404);
 		}
-    });
+	});
 });
 
 #erro 404
