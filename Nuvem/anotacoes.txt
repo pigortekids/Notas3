@@ -12,6 +12,7 @@ docker run --name=mysql --net rede -p 33060:3306 -e MYSQL_ROOT_PASSWORD=root -d 
 
 
 docker build -t teste .
+https://www.ibm.com/developerworks/community/blogs/8ff122ba-5fbc-4844-8f62-340d437131ee/entry/How_to_build_your_own_Apache_HTTP_server_on_Docker?lang=en
 
 consulta -> 172.18.0.2
 autenticacao -> 172.18.0.3
