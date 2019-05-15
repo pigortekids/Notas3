@@ -1,0 +1,3 @@
+https://docs.microsoft.com/pt-br/azure/container-instances/container-instances-tutorial-prepare-app
+https://docs.microsoft.com/pt-br/azure/container-instances/container-instances-tutorial-prepare-acr
+
