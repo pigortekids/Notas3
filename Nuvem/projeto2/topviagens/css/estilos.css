@@ -1,0 +1,274 @@
+/*Douglas*/
+#section1{
+    background-image: url('../imagens/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0% 0% 5% 0%
+}
+
+.navigation-clean {
+    background:#fff;
+    padding-top:.75rem;
+    padding-bottom:.75rem;
+    color:#333;
+    border-radius:0;
+    box-shadow:none;
+    border:none;
+    margin-bottom:0;
+  }
+  
+  @media (min-width:768px) {
+    .navigation-clean {
+      padding-top:1rem;
+      padding-bottom:1rem;
+    }
+  }
+  
+  .navigation-clean .navbar-brand {
+    font-weight:bold;
+    color:inherit;
+  }
+  
+  .navigation-clean .navbar-brand:hover {
+    color:#222;
+  }
+  
+  .navigation-clean .navbar-toggler {
+    border-color:#ddd;
+  }
+  
+  .navigation-clean .navbar-toggler:hover, .navigation-clean .navbar-toggler:focus {
+    background:none;
+  }
+  
+  .navigation-clean .navbar-toggler {
+    color:#888;
+  }
+  
+  .navigation-clean .navbar-collapse, .navigation-clean .form-inline {
+    border-top-color:#ddd;
+  }
+  
+  .navigation-clean.navbar-light .navbar-nav .nav-link.active, .navigation-clean.navbar-light .navbar-nav .nav-link.active:focus, .navigation-clean.navbar-light .navbar-nav .nav-link.active:hover {
+    color:#8f8f8f;
+    box-shadow:none;
+    background:none;
+    pointer-events:none;
+  }
+  
+  .navigation-clean.navbar .navbar-nav .nav-link {
+    padding-left:18px;
+    padding-right:18px;
+  }
+  
+  .navigation-clean.navbar-light .navbar-nav .nav-link {
+    color:#465765;
+  }
+  
+  .navigation-clean.navbar-light .navbar-nav .nav-link:focus, .navigation-clean.navbar-light .navbar-nav .nav-link:hover {
+    color:#37434d !important;
+    background-color:transparent;
+  }
+  
+  .navigation-clean .navbar-nav > li > .dropdown-menu {
+    margin-top:-5px;
+    box-shadow:none;
+    background-color:#fff;
+    border-radius:2px;
+  }
+  
+  .navigation-clean .dropdown-menu .dropdown-item:focus, .navigation-clean .dropdown-menu .dropdown-item {
+    line-height:2;
+    color:#37434d;
+  }
+  
+  .navigation-clean .dropdown-menu .dropdown-item:focus, .navigation-clean .dropdown-menu .dropdown-item:hover {
+    background:#eee;
+    color:inherit;
+  }
+  
+  
+
+
+/*Helio*/
+#rowSection2{
+    padding: 0% 0% 0% 18%
+}
+
+.card-title {
+    color: teal;
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+#wrapper1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 0.8rem;
+}
+
+.btn-Helio {
+    color: whitesmoke;
+    font-size: 1.2rem;
+    background-color: black;
+    width: 12rem
+}
+
+#container>p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 6.5rem;
+}
+
+#container>header>h1 {
+    text-align: center;
+    font-size: 3.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 1.2rem;
+}
+
+.card {
+    width: 25%;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+
+
+/*Rodrigo*/
+#section3{
+    background-color: rgb(5, 170, 192);
+    padding: 7% 0% 7% 0%;
+}
+
+#titulo3{
+    color: rgb(225, 238, 255);
+    font-family: 'Oswald', sans-serif;
+}
+
+#titulo31{
+    color: rgb(225, 238, 255);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7vw;
+}
+
+#subtitulo3{
+    color: rgb(189, 218, 255);
+    padding: 0% 20% 0% 20%;
+}
+
+#subtitulo31{
+    padding: 0% 20% 5% 20%;
+    color: rgb(189, 218, 255);
+    font-size: 1.1vw;
+    padding: 0% 10% 0% 10%;
+}
+
+.num{
+    color:white; 
+    font-size: 2.2vw;
+    margin-left:37%;
+    margin-top:22%;
+}
+
+.circle{
+    width:5vw;
+    height:5vw;
+    border:solid 1px;
+    border-radius:5vw;
+    border-color: white;
+    margin-top:20px;
+    margin-bottom: 25px;
+    margin-left: 40%;
+} 
+
+
+
+/*Igor*/
+.titulo{
+    font-size: 3vw;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+.subtitulo{
+    font-size: 1.5vw;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+#section2{
+    padding: 5% 0% 5% 0%
+}
+
+#section4{
+    background-image: url('../imagens/img_bg_2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 10% 0% 10% 0%
+}
+
+#titulo4{
+    font-size: 3.5vw;
+}
+
+#section5{
+    background-color: rgb(250, 250, 250);
+    padding: 5% 18% 5% 18%;
+}
+
+#titulo5{
+    color: rgb(125, 181, 255);
+}
+
+#subtitulo5{
+    padding: 0% 20% 5% 20%;
+    color: rgb(56, 81, 114);
+}
+
+#section6{
+    background-color: rgb(19, 140, 177);
+    padding: 5% 32% 5% 32%;
+}
+
+#titulo6{
+    color: white;
+}
+
+#subtitulo6{
+    color: white;
+}
+
+#botaum{
+    padding: 1% 0% 1% 0%;
+}
+
+#section7{
+    background-color: rgb(250, 250, 250);
+    padding: 5% 18% 5% 18%;
+}
+
+#titulo7{
+    font-size: 1.5vw;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+}
+
+#subtitulo7{
+    font-size: 0.9vw;
+    font-family: 'Oswald', sans-serif;
+    color: darkblue;
+}
+
+#final{
+    font-size: 0.6vw;
+}
+
+#finalIcones{
+    text-align: right;
+}

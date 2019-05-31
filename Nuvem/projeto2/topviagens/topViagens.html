@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TOP VIAGENS</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="stylesheet" href="js/pickadate.js-3.5.6/lib/themes/default.css">
+    <link rel="stylesheet" href="js/pickadate.js-3.5.6/lib/themes/default.date.css">
+    <link rel="stylesheet" href="js/loader/spin.css">
+</head>
+<body>
+
+    <!-- Douglas -->
+
+    <div id="section1">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color:rgba(255,255,255,0);color:rgba(255,255,255,0.7);">
+            <div class="container"><a class="navbar-brand" href="#" style="color:rgba(117, 117, 117, 0.81);">TOP VIAGENS<i style="color: rgb(0, 0, 122)">.</i></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgba(95, 95, 95, 0.97);">Destino</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgba(95, 95, 95, 0.97);">Viagem</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgba(95, 95, 95, 0.97);">Perco</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgba(95, 95, 95, 0.97);">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container" style="background-color:rgba(255,255,255,0);">
+            <div class="row" style="background-color:rgba(255,255,255,0);padding-top:0px;min-height:0;margin-top:0;"></div>
+                <div class="row">
+                    <div class="col">
+                        <header></header>
+                        <h1 class="text-left" style="color:rgba(102, 102, 102, 0.97);margin-top:55px;margin-right:55px;margin-left:55px;margin-bottom:55px;font-size:46px;padding-right:85px;padding-left:85px;padding-top:100px;padding-bottom:100px;">Planejando viajar ao redor do mundo?</h1>
+                    </div>
+                    <div class="col-xl-4" style="background-color:rgb(255,255,255);width:565px;">
+                        <div class="row" style="background-color:rgb(0,147,255);height:12px;"></div>
+                        <div class="row">
+                            <div class="col">
+                                <header>
+                                    <h1 class="text-left text-dark flex-column">Planeje sua viagem</h1>
+                                </header>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <form style="margin-right:0px;">
+                                    <label style="padding-top:12px;">Nome:</label>
+                                    <input class="form-control" type="text">
+                                    <label style="padding-top:12px;">Atividade:</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle flex-column" data-toggle="dropdown" aria-expanded="false" type="button" style="padding-right:12px;width:350px;background-color:rgb(255,255,255);color:rgb(0,0,0);">Atividades &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</button>
+                                        <div
+                                            class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </div><label style="padding-top:12px;">Destino:</label>
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle flex-column" data-toggle="dropdown" aria-expanded="false" type="button" style="width:350px;background-color:rgba(255,255,255,0);color:rgb(0,0,0);">Destinos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</button>
+                                <div
+                                    class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div><label style="padding-top:12px;">Data da viagem:</label>
+                        <input 
+                        id="input_01"
+                        class="datepicker"
+                        name="date"
+                        type="text"
+                        autofocuss
+                        value="14 August, 2014"
+                        data-valuee="2014-08-08">
+                        <button onclick="spidouSpirous();" class="btn btn-primary" type="button" style="width:350px;margin-right:0px;margin-left:0px;margin-bottom:40px;margin-top:12px;">Button</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Helio -->
+
+    <div class="section" id="section2">
+    <div id="container">
+            <header>
+                <h1>
+                    Destinos mais famosos!
+                </h1>
+            </header>
+            <p>Dignisssimos asperiores vitae velit veniam totam fuga molestias accusamus alias
+                <br> autem provivent. Odit abi aliquam dolor eius.</p>
+    
+    
+            <div class="row" id="rowSection2">
+    
+    
+                    <div class="card">
+                        <img class="card-img-top" src="imagens/img_1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">New York, USA</h5>
+                            <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia</p>
+                            <div id="wrapper1">
+                                <a href="#" class="btn btn-Helio" >Schedule a trip</a>
+                            </div>
+                        </div>
+                    </div>
+    
+             
+               
+                    <div class="card">
+                        <img class="card-img-top" src="imagens/img_2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Seoul, South Korea</h5>
+                            <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia</p>
+                            <div id="wrapper1">
+                                <a href="#" class="btn btn-Helio">Schedule a trip</a>
+                            </div>
+    
+                        </div>
+                    </div>
+               
+                <div class="card">
+                    <img class="card-img-top" src="imagens/img_3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Paris, France</h5>
+                        <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia.</p>
+                        <div id="wrapper1">
+                            <a href="#" class="btn btn-Helio">Schedule a trip</a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div id="empty_row1" style="margin-bottom: 1.5%;">
+    
+    
+            </div>
+    
+    
+            <div class="row" id="rowSection2">
+    
+    
+                <div class="card">
+                    <img class="card-img-top" src="imagens/img_4.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Sydney, Australia</h5>
+                        <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia</p>
+                        <div id="wrapper1">
+                            <a href="#" class="btn btn-Helio">Schedule a trip</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img class="card-img-top" src="imagens/img_5.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Greece, Europe</h5>
+                        <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia</p>
+                        <div id="wrapper1">
+                            <a href="#" class="btn btn-Helio">Schedule a trip</a>
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img class="card-img-top" src="imagens/img_6.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Spain, Europe</h5>
+                        <p class="card-text">Far far away, behind the word mountains, far from countries Vokalia.</p>
+                        <div id="wrapper1">
+                            <a href="#" class="btn btn-Helio">Schedule a trip</a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+    <!-- Rodrigo -->
+    <div class="section" id="section3">
+        <div class="container" id="container3">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo" id="titulo3">
+                        <p>Como funciona</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="subtitulo" id="subtitulo3">
+                        <p>Dignissimos asperiores vitae veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class= "circle">
+                        <h5 class="num">1</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="circle">
+                        <h5 class ="num">2</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="circle">
+                        <h5 class = "num">3</h5>  
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="titulo" id="titulo31">
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo31">
+                        <p>Dignissimos asperiores vitae velit veniam
+                            totam fuga molestias accusamus alias autem 
+                            provident. Odit ab aliquam dolor eius.
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titulo" id="titulo31">
+                        <p>Consectetur adipsicing elit</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo31">
+                        <p>Dignissimos asperiores vitae velit veniam 
+                            totam fuga molestias accusamus alias autem
+                            provident. Odit ab aliquam dolor eius.
+                        </p> 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titulo" id="titulo31">
+                        <p>Dignissimos asperiories vitae</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo31">
+                        <p>Dignissimos asperiores vitae velit veniam 
+                            totam fuga molestias accusamus alias autem 
+                            provident. Odit ab aliquam dolor eius.
+                        </p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Igor -->
+
+    <div class="section" id="section4">
+        <div class="container" id="container4">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo" id="titulo4">
+                        <p>Temos atendimento e serviços de primeira linha</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section5">
+        <div class="container" id="container5">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo">
+                        <p>Nossos cases de sucesso</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo5">
+                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accutsamus alias autem provident. Odit ab aliquam dolor eius</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="titulo" id="titulo5">
+                        <p>196</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo5">
+                        <p>DESTINO</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titulo" id="titulo5">
+                        <p>97</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo5">
+                        <p>HOTÉIS</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titulo" id="titulo5">
+                        <p>12402</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo5">
+                        <p>PASSAGEIROS</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titulo" id="titulo5">
+                        <p>12202</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo5">
+                        <p>CLIENTE FELIZ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section6">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo" id="titulo6">
+                        <p>Assine</p>
+                    </div>
+                    <div class="subtitulo" id="subtitulo6">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Nullam ullamcorper pallentesque sodales. Curabitur accumsan quam nec dui venenatis feugiat. Donec.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Seu Email" aria-label="Seu Email" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="botaum">ASSINE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section7">
+        <div class="container" id="container7">
+            <div class="row">
+                <div class="col-5">
+                    <div id="titulo7">
+                        <p>SOBRE NÓS</p>
+                    </div>
+                    <div id="subtitulo7">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Tempore eos molestilas quod sint ipsum possimus temporibus offica iste perspiciatis consectetur in fugiat repudiandae cum. Totam cupiditate nostrum ut neque ab?</p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="titulo7">
+                        <p>DESTINO</p>
+                    </div>
+                    <div id="subtitulo7">
+                        Europa<br>
+                        Austrália<br>
+                        Ásia<br>
+                        Canadá<br>
+                        Dubai
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="titulo7">
+                        <p>HOTÉIS</p>
+                    </div>
+                    <div id="subtitulo7">
+                        Luxe Hotel<br>
+                        Italy 5 Star Hotel<br>
+                        Dubai Hotel<br>
+                        Deluxe Hotel<br>
+                        BoraBora Hotel
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div id="titulo7">
+                        <p>ENTRE EM CONTATO</p>
+                    </div>
+                    <div id="subtitulo7">
+                        <p><i style="font-size:1.3vw" class="fa">&#xf095;&nbsp;</i>+55 11 4239 3000</p>
+                        <p><i style="font-size:1vw" class="fa">&#xf0e0;&nbsp;&nbsp;</i>maua@maua.br</p>
+                        <p><i style="font-size:1.1vw" class="fa">&#xf086;&nbsp;&nbsp;</i>Chat ao vivo</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <div id="final">
+                        @2018.All Rights Reserved
+                        <br>
+                        Desenvolvido por Mauá imagens: Unsplash
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="finalIcones">
+                        <i style="font-size:1.3vw" class="fa">&#xf099;&nbsp;&nbsp;&nbsp;</i>
+                        <i style="font-size:1.3vw" class="fa">&#xf082;&nbsp;&nbsp;&nbsp;</i>
+                        <i style="font-size:1.3vw" class="fa">&#xf0e1;&nbsp;&nbsp;&nbsp;</i>
+                        <i style="font-size:1.3vw" class="fa">&#xf1e3;</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pickadate.js-3.5.6/lib/jquery.2.0.0.js"></script>
+    <script src="js/pickadate.js-3.5.6/lib/picker.js"></script>
+    <script src="js/pickadate.js-3.5.6/lib/picker.date.js"></script>
+    <script src="js/pickadate.js-3.5.6/lib/legacy.js"></script>
+    <script src="js/loader/spin.js"></script>
+
+    <script type="text/javascript">
+        var $input = $( '.datepicker' ).pickadate({
+            formatSubmit: 'yyyy/mm/dd',
+            container: '#container',
+            closeOnSelect: false,
+            closeOnClear: false,
+        })
+        var picker = $input.pickadate('picker')
+    </script>
+
+</body>
+</html>

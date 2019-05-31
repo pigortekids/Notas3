@@ -1,3 +1,12 @@
 https://docs.microsoft.com/pt-br/azure/container-instances/container-instances-tutorial-prepare-app
 https://docs.microsoft.com/pt-br/azure/container-instances/container-instances-tutorial-prepare-acr
+https://docs.microsoft.com/pt-br/azure/container-instances/container-instances-tutorial-deploy-app
 
+https://docs.microsoft.com/pt-br/azure/container-registry/
+
+
+https://docs.microsoft.com/pt-br/azure/container-registry/container-registry-get-started-azure-cli
+
+
+
+-------->https://mikepfeiffer.io/azure-docker-containers.html

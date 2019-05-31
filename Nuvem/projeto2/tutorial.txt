@@ -1,0 +1,27 @@
+Dentro do Azure existem grupos de recursos, que servem para organizar os recursos que você utiliza dentro dele.
+Então primeiro, criamos um grupo de recurso.
+imagem(1)
+Apos criar um grupo de recurso, da mesma forma que no Dockerhub, é necessário se criar um container.
+imagem(2)
+Agora devemos adicionar uma imagem no nosso azure, dentro do grupo de recursos criado anteriormente.
+Para isso, devemos usar o docker com a imagem desejada.
+Primeiro logamos no container criado com o comando:
+docker login [container].azurecr.io
+passando o username sendo o nome do seu container e a senha encontrada dentro do seu registro de container no azure.
+imagem(3)
+imagem(4)
+Estando logado e tendo uma imagem desejada ja no padrão de nome do azure ([container].azurecr.io/[imagem]) devemos realizar um push na imagem:
+docker push [container].azurecr.io/[imagem]:[tag]
+imagem(5)
+Tendo sua imagem ja dentro do azure basta criar uma aplicação web.
+Entre em Cirar um recurso, Web, Aplicativo Web para Contêineres e selecione qual imagem deseja usar.
+imagem(6)
+imagem(7)
+Então você já terá seu site rodando com a imagem escolhida em [nome escolhido].azurewebsites.net .
+Preços:
+imagem(8)
+https://azure.microsoft.com/pt-br/pricing/details/container-registry/
+imagem(9)
+https://azure.microsoft.com/pt-br/pricing/details/container-instances/
+Para conferir os custos do seu web service, o azure tem uma plataforma para isso, podendo botar alertas e tendo recomendações:
+imagem(10)
