@@ -1,0 +1,209 @@
+3)
+A)
+public class DListNode {
+	public int item;
+	public DListNode next;
+	public DListNode prev;
+}
+
+B)
+public class DList {
+	public int size;
+	public DListNode head;
+	public DListNode tail;
+}
+
+C)
+public DList(DListNode node) {
+	DListNode trab = node;
+	trab.next = null;
+	trab.prev = null;
+	this.head = trab;
+	this.tail = trab;
+	this.size = 1;
+}
+
+public DList() {
+	this.size = 0;
+	this.head = null;
+	this.tail = null;
+}
+
+public void imprimeFirst() {
+	if (this.head == null)
+		System.out.println("Lista vazia...");
+	else
+		System.out.println("Primeiro item: " + this.head.item );
+}
+
+public void imprimeLast() {
+	if (this.tail == null)
+		System.out.println("Lista vazia...");
+	else
+		System.out.println("Último item: " + this.tail.item);
+}
+
+public void insereFim(int item) {
+	DListNode novoNode = new DListNode(item);
+	if (this.size == 0) {
+		this.head = novoNode;
+		this.tail = novoNode;
+		this.size++;
+	}
+	else {
+		this.tail.next = novoNode;
+		this.tail = novoNode;
+		this.size++;
+	}
+}
+
+public void insereInicio(int item) {
+	DListNode novoNode = new DListNode(item);
+	if (this.size == 0) {
+		this.head = novoNode;
+		this.tail = novoNode;
+		this.size++;
+	}
+	else {
+		this.head.prev = novoNode;
+		novoNode.next = this.head;
+		this.head = novoNode;
+		this.size++;
+	}
+}
+
+public void imprimeLista() {
+	int contador = 0;
+	DListNode p;
+	p = this.head;
+	if (this.size == 0 )
+		System.out.println("Lista vazia...");
+	else {
+		while ( p != null ) {
+			System.out.print ("\nNó: " + ++contador) ;
+			System.out.print (" Item: " + p.item + "\n");
+			p = p.next;
+		}
+	}
+}
+
+public void imprimeLista2() {
+	int contador = 0;
+	DListNode p;
+	p = this.tail;
+	if (this.size == 0 )
+		System.out.println("Lista vazia...");
+	else {
+		while ( p != null ) {
+			System.out.print ("\nNó: " + ++contador) ;
+			System.out.print (" Item: " + p.item + "\n");
+			p = p.prev;
+		}
+	}
+}
+
+public void deleteFirst() {
+	if (this.size == 0)
+		System.out.println("Deleção inválida. Lista vazia...");
+	else {
+		if (this.size == 1) {
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+		}
+		else {
+			this.head = this.head.next;
+			this.head.prev = null;
+			this.size--;
+		}
+	}
+}
+
+public void deleteLast() {
+	if (this.size == 0)
+		System.out.println("Deleção inválida. Lista vazia...");
+	else {
+		if (this.size == 1) {
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+		}
+		else {
+			this.tail = this.tail.prev;
+			this.tail.next = null;
+			this.size--;
+		}
+	}
+}
+
+D)
+      função       -->    complexidade
+imprimeFirst()     -->          1
+imprimeLast()      -->          1
+insereFim(item)    -->          1
+insereInicio(item) -->          1
+imprimeLista()     -->          n
+imprimeLista2()    -->          n
+deleteFirst()      -->          1
+deleteLast()       -->          1
+
+E)
+public double MediaLista() {
+	double retorno = null;
+	int contador = 0;
+	DListNode p;
+	p = this.head;
+	if (this.size > 0 ){
+		double media = 0;
+		while ( p != null ) {
+			media += p.item;
+			p = p.next;
+			contador++;
+		}
+		media /= contador;
+		retorno = media;
+	}
+	return retorno;
+}
+Ordem de complexidade = n;
+
+F)
+public void DobraValores() {
+	DListNode p;
+	p = this.head;
+	if (this.size > 0 ){
+		while ( p != null ) {
+			p.item *= 2;
+			p = p.next;
+		}
+	}
+}
+Ordem de complexidade = n;
+
+G)
+public int RetornaSegundoItem() {
+	int retorno = null;
+	DListNode p;
+	p = this.head;
+	if (this.size > 1 ){
+		p = p.next;
+		retorno = p.item;
+	}
+	return retorno;
+}
+Ordem de complexidade = 2;
+
+H)
+public int[] MediaLista() {
+	int[] retorno = new int[this.size];
+	DListNode p;
+	p = this.head;
+	if (this.size > 0 ){
+		for ( int i = 0 ; i < this.size ; i ++ ){
+			retorno[i] = p.item;
+			p = p.next;
+		}
+	}
+	return retorno;
+}
+Ordem de complexidade = n;
