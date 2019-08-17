@@ -1,1 +1,8 @@
 https://palletsprojects.com/p/flask/
+
+pip install virtualenv
+virtualenv virtual_env
+source virtual_env/Scripts/activate
+pip freeze > req.txt
+pip install -r req.txt
+(http://www.gilles-bertrand.com/2012/11/migrate-duplicate-export-move-virtualenv-two-computers-debian-python.html)
