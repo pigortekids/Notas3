@@ -1,0 +1,4 @@
+MPI
+
+rodar em python:
+	mpiexec -n 4 python app.py
