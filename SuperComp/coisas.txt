@@ -2,3 +2,7 @@ MPI
 
 rodar em python:
 	mpiexec -n 4 python app.py
+
+rodar em c:
+	gcc -fopenmp main.c -o main
+	tiem ./main

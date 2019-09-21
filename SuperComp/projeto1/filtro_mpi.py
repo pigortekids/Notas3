@@ -83,6 +83,7 @@ caso a quantidade de arquivos dividido pela quantidade de ranks der um resto mui
 atraasando o processo como um todo para rodar, então faz um tratamento para diminuir os ranks para dividir melhor os dias
 exemplo: 15 dias com 4 ranks, o ultimo rank ia rodar 7 dias enquanto os outros só 4, então diminui pra 3 onde todos vao rodar 5
 """
+#CORRIGIR, ADICIONAR O RESTO DA DIVISÃO UM EM CADA UM DOS RANKS QUE FOR POSSIVEL
 divisoes = size
 while (qnt_arquivos % divisoes ) > divisoes / 2:
     divisoes -= 1
