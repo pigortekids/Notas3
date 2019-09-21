@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "5bcae07c-409a-4efb-85f5-170a0e45c7a4",
+		"name": "collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "autorizacao",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"igor\",\r\n    \"password\": \"123\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livros",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkwNjcyNTYsImlhdCI6MTU2OTA2Njk1NiwibmJmIjoxNTY5MDY2OTU2LCJpZGVudGl0eSI6MX0.9EpyJJ0asA1zuGkLafvsjwz0bK79faI18U4xfW2HWso",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/livros",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkwNjc2MjAsImlhdCI6MTU2OTA2NzMyMCwibmJmIjoxNTY5MDY3MzIwLCJpZGVudGl0eSI6MX0.ir_Fads2ibavYa_YqZORDTFL8Z9lWWBNoKTSKqMX_Kc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkwNjc2MjAsImlhdCI6MTU2OTA2NzMyMCwibmJmIjoxNTY5MDY3MzIwLCJpZGVudGl0eSI6MX0.ir_Fads2ibavYa_YqZORDTFL8Z9lWWBNoKTSKqMX_Kc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"teste\",\r\n    \"autor\":\"teste\",\r\n    \"genero\":\"teste\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/livro/3",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkwNjc2MjAsImlhdCI6MTU2OTA2NzMyMCwibmJmIjoxNTY5MDY3MzIwLCJpZGVudGl0eSI6MX0.ir_Fads2ibavYa_YqZORDTFL8Z9lWWBNoKTSKqMX_Kc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"teste2\",\r\n    \"autor\":\"teste2\",\r\n    \"genero\":\"teste2\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/livro/3",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkwNjc2MjAsImlhdCI6MTU2OTA2NzMyMCwibmJmIjoxNTY5MDY3MzIwLCJpZGVudGl0eSI6MX0.ir_Fads2ibavYa_YqZORDTFL8Z9lWWBNoKTSKqMX_Kc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/livro/3",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
