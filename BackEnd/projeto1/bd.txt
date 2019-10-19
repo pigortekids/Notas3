@@ -1,0 +1,10 @@
+CREATE SCHEMA `biblioteca` ;
+
+
+
+CREATE TABLE `biblioteca`.`livro` (
+  `id_livro` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `autor` VARCHAR(45) NOT NULL,
+  `genero` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_livro`));
