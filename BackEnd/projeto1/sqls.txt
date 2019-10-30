@@ -1,1 +1,24 @@
-INSERT INTO `biblioteca`.`livro` (`nome`, `autor`, `genero`) VALUES ('nome3', 'autor3', 'genero3');
+CREATE  TABLE `biblioteca`.`livro` (
+  `id_livro` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NULL ,
+  `autor` VARCHAR(45) NULL ,
+  `genero` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id_livro`) );
+  
+  
+CREATE  TABLE `biblioteca`.`cliente` (
+  `id_cliente` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NULL ,
+  `cpf` VARCHAR(45) NULL ,
+  `idade` INT NULL ,
+  `username` VARCHAR(45) NULL ,
+  `password` TEXT NULL ,
+  PRIMARY KEY (`id_cliente`) );
+
+CREATE  TABLE `biblioteca`.`aluguel` (
+  `id_aluguel` INT NOT NULL AUTO_INCREMENT ,
+  `id_cliente` INT NULL ,
+  `id_livro` INT NULL ,
+  `dia_aluguel` DATE NULL ,
+  `dia_devolucao` DATE NULL ,
+  PRIMARY KEY (`id_aluguel`) );

@@ -3,7 +3,7 @@ import mysql.connector
 class DAO():
 
     @staticmethod
-    def consulta(sql):
+    def select(sql, val=None):
         retorno = None
 
         try:
@@ -13,13 +13,37 @@ class DAO():
                                             password='')
             
             cursor = connection.cursor()
-            cursor.execute(sql)
-            if sql[:7] == "SELECT":
-                retorno = cursor.fetchall()
+            cursor.execute(sql, val)
+            retorno = cursor.fetchall()
         except Exception as exp:
             print(exp)
         finally:
-            cursor.close()
-            connection.close()
+            if 'cursor' in locals():
+                cursor.close()
+            if 'connection' in locals():
+                connection.close()
+
+        return retorno
+
+    @staticmethod
+    def execute(sql, val):
+        retorno = None
+
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                            database='biblioteca',
+                                            user='root',
+                                            password='')
+            
+            cursor = connection.cursor()
+            cursor.execute(sql, val)
+            connection.commit()
+        except Exception as exp:
+            print(exp)
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+            if 'connection' in locals():
+                connection.close()
 
         return retorno
