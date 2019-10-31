@@ -39,14 +39,14 @@ def find_nearest_idx(array, value): # função para achar o valor mais perto em 
 ############################   VARIAVEIS   ############################
 tmp_ini = time.time() #variavel para contar o tempo do arquivo
 
-HDexterno = "H:/TCC/" #coloquei isso porque fica mudando o nome do diretorio
-versao = "v9" #versão que esta sendo usada
-pastaCoisas = HDexterno + "Coisas/" #pasta com arquivos com feriados e vencimentos
-pastaArquivosDescompactados = HDexterno + "ArquivosDescompactados/" #pasta dos arquivos originais
-pastaArquivosDescompactadosJaRodados = HDexterno + "ArquivosDescompactados/JaRodados/" #pasta dos arquivos originais ja rodados
-pastaArquivosFiltrados = HDexterno + "ArquivosFiltrados/" + versao + "/" #pasta dos arquivos já filtrados
-pastaArquivoConsolidado = HDexterno + "ArquivoFinal/" + versao + "/" #pasta final do arquivo consolidado
-pastaArquivosJaConsolidados = HDexterno + "ArquivosFiltrados/" + versao + "/JaConsolidados/" #pasta dos arquivos ja consolidados
+path = os.path.dirname(os.path.abspath( __file__ )) + "\\arquivos\\" #coloquei isso porque fica mudando o nome do diretorio
+path = "E:\\TCC\\"
+pastaCoisas = path + "Coisas\\" #pasta com arquivos com feriados e vencimentos
+pastaArquivosDescompactados = path + "ArquivosDescompactados\\" #pasta dos arquivos originais
+pastaArquivosDescompactadosJaRodados = path + "ArquivosDescompactados\\JaRodados\\" #pasta dos arquivos originais ja rodados
+pastaArquivosFiltrados = path + "ArquivosFiltrados\\" #pasta dos arquivos já filtrados
+pastaArquivosJaConsolidados = path + "ArquivosFiltrados\\JaConsolidados\\" #pasta dos arquivos ja consolidados
+pastaArquivoConsolidado = path + "ArquivoFinal\\" #pasta final do arquivo consolidado
 
 indexTotal = ['dt', 'simbolo', 'numero_negocio', 'preco', 'qnt', 'hr', 'indicador_anulacao',
         'data_oferta_compra', 'numero_seq_compra', 'numero_geracao_compra', 'codigo_id_compra',
@@ -55,8 +55,8 @@ indexTotal = ['dt', 'simbolo', 'numero_negocio', 'preco', 'qnt', 'hr', 'indicado
 indexFiltrado = ['dt', 'simbolo', 'preco', 'qnt', 'hr'] #primeiro filtro de colunas
 indexFiltrado2 = ['dt', 'preco', 'hr_int', 'preco_pon', 'qnt_soma', 'max', 'min', 'IND', 'ISP'] #segundo filtro de colunas
 
-vencimento = pd.read_csv("vencimento.csv") #le o arquivo contendo os vencimentos do WDO
-feriados = pd.read_csv("feriadosBR.csv") #le o arquivo com os feriados BRs
+vencimento = pd.read_csv(pastaCoisas + "vencimento.csv") #le o arquivo contendo os vencimentos do WDO
+feriados = pd.read_csv(pastaCoisas + "feriadosBR.csv") #le o arquivo com os feriados BRs
 holidays = feriados['Data'] #pega só as datas
 cal = Calendar(holidays=holidays, weekdays=['Sunday', 'Saturday']) #adiciona no calendario para poder controlar
 
@@ -75,33 +75,6 @@ horarioFimInt = tempoStrToInt(horarioFim) #traduz o horario fim
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
-
-qnt_arquivos = len([f for f in os.listdir(pastaArquivosDescompactados)if os.path.isfile(os.path.join(pastaArquivosDescompactados, f))])
-
-"""
-caso a quantidade de arquivos dividido pela quantidade de ranks der um resto muito alto, o ultimo rank vai ficar com dias demais
-atraasando o processo como um todo para rodar, então faz um tratamento para diminuir os ranks para dividir melhor os dias
-exemplo: 15 dias com 4 ranks, o ultimo rank ia rodar 7 dias enquanto os outros só 4, então diminui pra 3 onde todos vao rodar 5
-"""
-#CORRIGIR, ADICIONAR O RESTO DA DIVISÃO UM EM CADA UM DOS RANKS QUE FOR POSSIVEL
-divisoes = size
-while (qnt_arquivos % divisoes ) > divisoes / 2:
-    divisoes -= 1
-
-if rank < size - 1:
-    qnt_arquivos_para_rodar = int(qnt_arquivos / divisoes)
-    comecar_em = rank * qnt_arquivos_para_rodar 
-else:
-    if divisoes != size:
-        qnt_arquivos_para_rodar = (qnt_arquivos % divisoes)
-        if qnt_arquivos_para_rodar == 0:
-            req = comm.send( 1 , dest = 0 , tag = rank )
-            sys.exit()
-    else:
-        qnt_arquivos_para_rodar = int(qnt_arquivos / divisoes) + (qnt_arquivos % divisoes)
-    comecar_em = qnt_arquivos - qnt_arquivos_para_rodar
-   
-acabar_em = comecar_em + qnt_arquivos_para_rodar - 1
 #######################################################################
 
 
@@ -110,175 +83,175 @@ acabar_em = comecar_em + qnt_arquivos_para_rodar - 1
 
 ##############################   FILTRO   #############################
 os.chdir(pastaArquivosDescompactados) #caminho da pasta de importação
-arquivo_n = 0
-for file in glob.glob("*.txt"): #pega arquivos com final TXT
-    if arquivo_n >= comecar_em and arquivo_n <= acabar_em:
+files = glob.glob("*.txt")
+
+for i in range(rank, len(files), size): #pega arquivos com final TXT
         
-        inicioParcial = time.time() #variavel para contar o tempo do arquivo
-        
-        arquivo = pd.read_csv(file, sep=';', skiprows=1, header=None, names=indexTotal) #le o arquivo
-        arquivo.drop(arquivo.tail(1).index, inplace=True) #tira ultima linha do arquivo
-        arquivo = arquivo.filter(items=indexFiltrado) #pega apenas as colunas que precisamos
-        arquivo['simbolo'] = arquivo['simbolo'].str.strip() #tira os espaços em branco
-        mascara = arquivo['simbolo'].str.len() == 6 #criando uma mascara para filtrar
-        arquivo = arquivo.loc[mascara] #pega so os que tem 6 digitos
-        
-        
-        #################### filtro do WDO ####################
-        diaDoArquivo = file[8:16] #pega a data do arquivo
-        mesDoDia = int(diaDoArquivo[4:6]) #pega o mes da data do movimento
-        anoDoDia = int(diaDoArquivo[:4]) #pega o ano da data do movimento
-        ultimoDiaUtil = cal.getdate('last bizday', anoDoDia, mesDoDia) #pega o ultimo dia util do mes da data do movimento
-        mesCorreto = mesDoDia + 1 #define uma variavel de mes correto adicionando um no mes do dia do movimento
-        anoCorreto = anoDoDia #define uma variavel de ano correto
-        if str(ultimoDiaUtil).replace('-', '') == str(diaDoArquivo): #confere se é o ultimo dia util do mes
-            mesCorreto += 1 #adiciona um na variavel do mes correto
-        if mesCorreto > 12: #se o mes passar de 12
-            mesCorreto -= 12 #tira 12 do valor do mes
-            anoCorreto += 1 #e aumenta em um o ano
-        letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:] #define a letra que deveria estar no codigo
-        arquivoWDO = arquivo[arquivo['simbolo'].str.contains('WDO' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
-        del arquivoWDO['simbolo'] #dleta a coluna do simbolo
-        
-        #################### filtro ISP ####################
-        diaCorreto = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), int(diaDoArquivo[-2:]))
-        mesCorreto = mesDoDia
-        anoCorreto = anoDoDia
-        if mesDoDia % 3 == 0:
-            diaDoMes = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), 1)
-            qnt_sexta = 0
-            while qnt_sexta < 3:
-                if diaDoMes.weekday() == 4: #4 é sexta-feira
-                    qnt_sexta += 1
-                diaDoMes += datetime.timedelta(days=1)
-            diaDoMes -= datetime.timedelta(days=2)
-            if diaCorreto > diaDoMes:
-                mesCorreto += 1
-        while mesCorreto % 3 != 0:
+    file = files[i]
+
+    inicioParcial = time.time() #variavel para contar o tempo do arquivo
+    
+    arquivo = pd.read_csv(file, sep=';', skiprows=1, header=None, names=indexTotal) #le o arquivo
+    arquivo.drop(arquivo.tail(1).index, inplace=True) #tira ultima linha do arquivo
+    arquivo = arquivo.filter(items=indexFiltrado) #pega apenas as colunas que precisamos
+    arquivo['simbolo'] = arquivo['simbolo'].str.strip() #tira os espaços em branco
+    mascara = arquivo['simbolo'].str.len() == 6 #criando uma mascara para filtrar
+    arquivo = arquivo.loc[mascara] #pega so os que tem 6 digitos
+    
+    
+    #################### filtro do WDO ####################
+    diaDoArquivo = file[8:16] #pega a data do arquivo
+    mesDoDia = int(diaDoArquivo[4:6]) #pega o mes da data do movimento
+    anoDoDia = int(diaDoArquivo[:4]) #pega o ano da data do movimento
+    ultimoDiaUtil = cal.getdate('last bizday', anoDoDia, mesDoDia) #pega o ultimo dia util do mes da data do movimento
+    mesCorreto = mesDoDia + 1 #define uma variavel de mes correto adicionando um no mes do dia do movimento
+    anoCorreto = anoDoDia #define uma variavel de ano correto
+    if str(ultimoDiaUtil).replace('-', '') == str(diaDoArquivo): #confere se é o ultimo dia util do mes
+        mesCorreto += 1 #adiciona um na variavel do mes correto
+    if mesCorreto > 12: #se o mes passar de 12
+        mesCorreto -= 12 #tira 12 do valor do mes
+        anoCorreto += 1 #e aumenta em um o ano
+    letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:] #define a letra que deveria estar no codigo
+    arquivoWDO = arquivo[arquivo['simbolo'].str.contains('WDO' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
+    del arquivoWDO['simbolo'] #dleta a coluna do simbolo
+    
+    #################### filtro ISP ####################
+    diaCorreto = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), int(diaDoArquivo[-2:]))
+    mesCorreto = mesDoDia
+    anoCorreto = anoDoDia
+    if mesDoDia % 3 == 0:
+        diaDoMes = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), 1)
+        qnt_sexta = 0
+        while qnt_sexta < 3:
+            if diaDoMes.weekday() == 4: #4 é sexta-feira
+                qnt_sexta += 1
+            diaDoMes += datetime.timedelta(days=1)
+        diaDoMes -= datetime.timedelta(days=2)
+        if diaCorreto > diaDoMes:
             mesCorreto += 1
-        if mesCorreto > 12: #se o mes passar de 12
-            mesCorreto -= 12 #tira 12 do valor do mes
-            anoCorreto += 1 #e aumenta em um o ano
-        letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:]
-        arquivoISP = arquivo[arquivo['simbolo'].str.contains('ISP' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
-        del arquivoISP['simbolo'] #dleta a coluna do simbolo
-        
-        
-        #################### filtro do IND ####################
-        diaCorreto = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), int(diaDoArquivo[-2:]))
-        mesCorreto = mesDoDia
-        anoCorreto = anoDoDia
-        if mesDoDia % 2 == 0:
-            diaDoMes = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), 15)
-            diaPraCima = diaDoMes
-            diferencaCima = 0
-            while diaPraCima.weekday() != 2:
-                diaPraCima += datetime.timedelta(days=1)
-                diferencaCima += 1
-            diaPraBaixo = diaDoMes
-            diferencaBaixo = 0
-            while diaPraBaixo.weekday() != 2:
-                diaPraBaixo -= datetime.timedelta(days=1)
-                diferencaBaixo += 1
-            if diferencaCima < diferencaBaixo:
-                diaDoMes = diaPraCima
-            else:
-                diaDoMes = diaPraBaixo
-            diaDoMes -= datetime.timedelta(days=1)
-            if diaCorreto > diaDoMes:
-                mesCorreto += 1
-        while mesCorreto % 2 != 0:
+    while mesCorreto % 3 != 0:
+        mesCorreto += 1
+    if mesCorreto > 12: #se o mes passar de 12
+        mesCorreto -= 12 #tira 12 do valor do mes
+        anoCorreto += 1 #e aumenta em um o ano
+    letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:]
+    arquivoISP = arquivo[arquivo['simbolo'].str.contains('ISP' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
+    del arquivoISP['simbolo'] #dleta a coluna do simbolo
+    
+    
+    #################### filtro do IND ####################
+    diaCorreto = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), int(diaDoArquivo[-2:]))
+    mesCorreto = mesDoDia
+    anoCorreto = anoDoDia
+    if mesDoDia % 2 == 0:
+        diaDoMes = datetime.date(int(diaDoArquivo[:4]), int(diaDoArquivo[4:6]), 15)
+        diaPraCima = diaDoMes
+        diferencaCima = 0
+        while diaPraCima.weekday() != 2:
+            diaPraCima += datetime.timedelta(days=1)
+            diferencaCima += 1
+        diaPraBaixo = diaDoMes
+        diferencaBaixo = 0
+        while diaPraBaixo.weekday() != 2:
+            diaPraBaixo -= datetime.timedelta(days=1)
+            diferencaBaixo += 1
+        if diferencaCima < diferencaBaixo:
+            diaDoMes = diaPraCima
+        else:
+            diaDoMes = diaPraBaixo
+        diaDoMes -= datetime.timedelta(days=1)
+        if diaCorreto > diaDoMes:
             mesCorreto += 1
-        if mesCorreto > 12: #se o mes passar de 12
-            mesCorreto -= 12 #tira 12 do valor do mes
-            anoCorreto += 1 #e aumenta em um o ano
-        letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:]
-        arquivoIND = arquivo[arquivo['simbolo'].str.contains('IND' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
-        del arquivoIND['simbolo'] #dleta a coluna do simbolo
+    while mesCorreto % 2 != 0:
+        mesCorreto += 1
+    if mesCorreto > 12: #se o mes passar de 12
+        mesCorreto -= 12 #tira 12 do valor do mes
+        anoCorreto += 1 #e aumenta em um o ano
+    letraCorreta = vencimento[vencimento['mes'] == mesCorreto].iloc[0, 0] + str(anoCorreto)[2:]
+    arquivoIND = arquivo[arquivo['simbolo'].str.contains('IND' + letraCorreta)] #filtra o arquivo por WDO e a letra do vencimento
+    del arquivoIND['simbolo'] #dleta a coluna do simbolo
+    
+    
+    ################### filtro de horario ###################
+    arquivoWDO = arquivoWDO[arquivoWDO['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
+    arquivoWDO['hr_int'] = arquivoWDO.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
+    del arquivoWDO['hr'] #deleta a coluna do horario
+    arquivoWDO = arquivoWDO.sort_values(by=['hr_int']) #ordena os valores pelo horário
+    arquivoWDO.reset_index(drop=True, inplace=True) #reseta o index do arquivo
+    last_idxWDO = 0 #define variavel pro ultimo index que foi pego
+    
+    
+    arquivoISP = arquivoISP[arquivoISP['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
+    arquivoISP['hr_int'] = arquivoISP.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
+    del arquivoISP['hr'] #deleta a coluna do horario
+    arquivoISP = arquivoISP.sort_values(by=['hr_int']) #ordena os valores pelo horário
+    arquivoISP.reset_index(drop=True, inplace=True) #reseta o index do arquivo
+    
+    
+    arquivoIND = arquivoIND[arquivoIND['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
+    arquivoIND['hr_int'] = arquivoIND.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
+    del arquivoIND['hr'] #deleta a coluna do horario
+    arquivoIND = arquivoIND.sort_values(by=['hr_int']) #ordena os valores pelo horário
+    arquivoIND.reset_index(drop=True, inplace=True) #reseta o index do arquivo
+    
+    
+    arquivoFinal = pd.DataFrame(columns=indexFiltrado2) #cria variavel para consolidar os valores mais perto
+    horarioComecar = horarioInicioInt #inicia variavel de hora para começar a rodar o filtro
+    
+    
+    for horaReferencia in range(horarioComecar + periodicidade, horarioFimInt, periodicidade):
+        idxWDO = find_nearest_idx(arquivoWDO['hr_int'], horaReferencia) #index da linha do valor mais perto
+        if arquivoWDO.iloc[idxWDO, 3] > horaReferencia: #se o horario for acima do referencia
+            if idxWDO != 0:
+                idxWDO -= 1 #volta 1
+        preco_pon = float(0) #inicia variavel preço ponderado
+        qnt_soma = int(0) #inicia variavel somatoria da quantidade
+        maximo = arquivoWDO.iloc[idxWDO, 1] #inicia variavel maximo com o valor de agora
+        minimo = arquivoWDO.iloc[idxWDO, 1] #inicia variavel minimo com o valor de agora
+        for i in range( last_idxWDO , idxWDO + 1 ):
+            if maximo < arquivoWDO.iloc[i, 1]: # 1 = preco
+                maximo = arquivoWDO.iloc[i, 1]
+            if minimo > arquivoWDO.iloc[i, 1]:
+                minimo = arquivoWDO.iloc[i, 1]
+            preco_pon += arquivoWDO.iloc[i, 1] * arquivoWDO.iloc[i, 2] # 2 = qnt
+            qnt_soma += arquivoWDO.iloc[i, 2]
+        last_idxWDO = idxWDO + 1 #atualiza a variavel de ultimo index
+        if qnt_soma != 0: #caso a somatoria da quantidade seja diferente de 0
+            preco_pon = round( preco_pon / qnt_soma , 2) #faz o calculo do preço ponderado
+            
         
-        
-        ################### filtro de horario ###################
-        arquivoWDO = arquivoWDO[arquivoWDO['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
-        arquivoWDO['hr_int'] = arquivoWDO.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
-        del arquivoWDO['hr'] #deleta a coluna do horario
-        arquivoWDO = arquivoWDO.sort_values(by=['hr_int']) #ordena os valores pelo horário
-        arquivoWDO.reset_index(drop=True, inplace=True) #reseta o index do arquivo
-        last_idxWDO = 0 #define variavel pro ultimo index que foi pego
-        
-        
-        arquivoISP = arquivoISP[arquivoISP['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
-        arquivoISP['hr_int'] = arquivoISP.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
-        del arquivoISP['hr'] #deleta a coluna do horario
-        arquivoISP = arquivoISP.sort_values(by=['hr_int']) #ordena os valores pelo horário
-        arquivoISP.reset_index(drop=True, inplace=True) #reseta o index do arquivo
-        
-        
-        arquivoIND = arquivoIND[arquivoIND['hr'] > horarioInicio] #filtra para começar apenas em um horario certo
-        arquivoIND['hr_int'] = arquivoIND.apply(lambda row: tempoStrToInt(row['hr']), axis=1) #cria coluna do valor inteiro do horario
-        del arquivoIND['hr'] #deleta a coluna do horario
-        arquivoIND = arquivoIND.sort_values(by=['hr_int']) #ordena os valores pelo horário
-        arquivoIND.reset_index(drop=True, inplace=True) #reseta o index do arquivo
-        
-        
-        arquivoFinal = pd.DataFrame(columns=indexFiltrado2) #cria variavel para consolidar os valores mais perto
-        horarioComecar = horarioInicioInt #inicia variavel de hora para começar a rodar o filtro
-        
-        
-        for horaReferencia in range(horarioComecar + periodicidade, horarioFimInt, periodicidade):
-            idxWDO = find_nearest_idx(arquivoWDO['hr_int'], horaReferencia) #index da linha do valor mais perto
-            if arquivoWDO.iloc[idxWDO, 3] > horaReferencia: #se o horario for acima do referencia
-                if idxWDO != 0:
-                    idxWDO -= 1 #volta 1
-            preco_pon = float(0) #inicia variavel preço ponderado
-            qnt_soma = int(0) #inicia variavel somatoria da quantidade
-            maximo = arquivoWDO.iloc[idxWDO, 1] #inicia variavel maximo com o valor de agora
-            minimo = arquivoWDO.iloc[idxWDO, 1] #inicia variavel minimo com o valor de agora
-            for i in range( last_idxWDO , idxWDO + 1 ):
-                if maximo < arquivoWDO.iloc[i, 1]: # 1 = preco
-                    maximo = arquivoWDO.iloc[i, 1]
-                if minimo > arquivoWDO.iloc[i, 1]:
-                    minimo = arquivoWDO.iloc[i, 1]
-                preco_pon += arquivoWDO.iloc[i, 1] * arquivoWDO.iloc[i, 2] # 2 = qnt
-                qnt_soma += arquivoWDO.iloc[i, 2]
-            last_idxWDO = idxWDO + 1 #atualiza a variavel de ultimo index
-            if qnt_soma != 0: #caso a somatoria da quantidade seja diferente de 0
-                preco_pon = round( preco_pon / qnt_soma , 2) #faz o calculo do preço ponderado
+        idxISP = find_nearest_idx(arquivoISP['hr_int'], horaReferencia) #index da linha do valor mais perto
+        if arquivoISP.iloc[idxISP, 3] > horaReferencia: #se o horario for acima do referencia
+            if idxISP != 0:
+                idxISP -= 1 #volta 1
                 
-            
-            idxISP = find_nearest_idx(arquivoISP['hr_int'], horaReferencia) #index da linha do valor mais perto
-            if arquivoISP.iloc[idxISP, 3] > horaReferencia: #se o horario for acima do referencia
-                if idxISP != 0:
-                    idxISP -= 1 #volta 1
-                    
-                    
-            idxIND = find_nearest_idx(arquivoIND['hr_int'], horaReferencia) #index da linha do valor mais perto
-            if arquivoIND.iloc[idxIND, 3] > horaReferencia: #se o horario for acima do referencia
-                if idxIND != 0:
-                    idxIND -= 1 #volta 1
-                    
-            
-            linhaAdicionar = {'dt':arquivoWDO.iloc[idxWDO, 0], 'preco':arquivoWDO.iloc[idxWDO, 1], 'hr_int':horaReferencia,
-                              'preco_pon':preco_pon, 'qnt_soma':qnt_soma, 'max':maximo, 'min':minimo,
-                              'IND':arquivoIND.iloc[idxIND, 1], 'ISP':arquivoISP.iloc[idxISP, 1]} #cria linha a ser adicionada no arquivo final
-            arquivoFinal = arquivoFinal.append(linhaAdicionar, ignore_index=True) #adiciona no arquivo final
+                
+        idxIND = find_nearest_idx(arquivoIND['hr_int'], horaReferencia) #index da linha do valor mais perto
+        if arquivoIND.iloc[idxIND, 3] > horaReferencia: #se o horario for acima do referencia
+            if idxIND != 0:
+                idxIND -= 1 #volta 1
+                
         
+        linhaAdicionar = {'dt':arquivoWDO.iloc[idxWDO, 0], 'preco':arquivoWDO.iloc[idxWDO, 1], 'hr_int':horaReferencia,
+                            'preco_pon':preco_pon, 'qnt_soma':qnt_soma, 'max':maximo, 'min':minimo,
+                            'IND':arquivoIND.iloc[idxIND, 1], 'ISP':arquivoISP.iloc[idxISP, 1]} #cria linha a ser adicionada no arquivo final
+        arquivoFinal = arquivoFinal.append(linhaAdicionar, ignore_index=True) #adiciona no arquivo final
+    
+    
+    arquivoFinal.to_csv(pastaArquivosFiltrados + "filtro_dia_" + diaDoArquivo + ".csv", index=None, header=True) #exporta arquivo do dia WDO
         
-        arquivoFinal.to_csv(pastaArquivosFiltrados + "filtro_dia_" + diaDoArquivo + ".csv", index=None, header=True) #exporta arquivo do dia WDO
-            
-        
-        arquivoFinal = None #limpa arquivo final
-        arquivo = None #limpa a variavel arquivo
-        arquivoWDO = None #limpa a variavel arquivoWDO
-        arquivoISP = None #limpa a variavel arquivoISP
-        arquivoIND = None #limpa a variavel arquivoIND
-        
-        
-        #shutil.move(pastaArquivosDescompactados + file, pastaArquivosDescompactadosJaRodados) #move o arquivo para a pasta de ja rodados
-        
-        
-        fim = time.time() - inicioParcial #contabiliza o tempo do arquivo
-        print("({0}/{1}) Arquivo do dia {2} filtrado em {3:.3f} segundos".format(arquivo_n, qnt_arquivos, diaDoArquivo, fim)) #mostra o tempo que demorou pra filtrar o arquivo
-    arquivo_n += 1
+    
+    arquivoFinal = None #limpa arquivo final
+    arquivo = None #limpa a variavel arquivo
+    arquivoWDO = None #limpa a variavel arquivoWDO
+    arquivoISP = None #limpa a variavel arquivoISP
+    arquivoIND = None #limpa a variavel arquivoIND
+    
+    
+    #shutil.move(pastaArquivosDescompactados + file, pastaArquivosDescompactadosJaRodados) #move o arquivo para a pasta de ja rodados
+    
+    
+    fim = time.time() - inicioParcial #contabiliza o tempo do arquivo
 #######################################################################
 
 

@@ -1,0 +1,49 @@
+Demographic: 
+• Sex: male or female(Nominal) 
+• Age: Age of the patient;(Continuous - Although the recorded ages have been truncated to whole numbers, the concept of age is continuous) Behavioral 
+• Current Smoker: whether or not the patient is a current smoker (Nominal) 
+• Cigs Per Day: the number of cigarettes that the person smoked on average in one day.(can be considered continuous as one can have any number of cigarettes, even half a cigarette.) Medical( history)
+• BP Meds: whether or not the patient was on blood pressure medication (Nominal) 
+• Prevalent Stroke: whether or not the patient had previously had a stroke (Nominal)
+• Prevalent Hyp: whether or not the patient was hypertensive (Nominal)
+• Diabetes: whether or not the patient had diabetes (Nominal) Medical(current) 
+• Tot Chol: total cholesterol level (Continuous) 
+• Sys BP: systolic blood pressure (Continuous) 
+• Dia BP: diastolic blood pressure (Continuous) 
+• BMI: Body Mass Index (Continuous)
+• Heart Rate: heart rate (Continuous - In medical research, variables such as heart rate though in fact discrete, yet are considered continuous because of large number of possible values.) 
+• Glucose: glucose level (Continuous) Predict variable (desired target)
+• 10 year risk of coronary heart disease CHD (binary: “1”, means “Yes”, “0” means “No”)
+
+
+
+• Sex: Sexo
+• Age: Idade
+• Current Smoker: Fumante
+• Cigs Per Day: Cigarros por dia
+• BP Meds: Estava tomando remédio de pressão sanguínea
+• Prevalent Stroke: Já teve derrame
+• Prevalent Hyp: Tem hipertensão arterial (pressão alta)
+• Diabetes: Tem diabetes
+• Tot Chol: Nivel do colesterol
+	<= 200 bom
+	> 200 e <= 239 elevado
+	> 240 alto
+• Sys BP: Pressão arterial sistólica (nivel de pressão nas arterias quando o coração bate) mmHg
+• Dia BP: Pressão arterial diastólica (nivel de pressão nas arterias enquanto o coração está parado entre batidas) mmHg
+	120x80 é a pressão sistólica x pressão diastólica
+	pressão alta: superior a 140x90
+	pressão baixa: inferior a 90x60
+• BMI: Índice de massa corporal
+	<= 18.5 baixo
+	> 18.5 e <= 24.9 normal
+	> 25.0 e <= 29.9 sobrepeso
+	> 30.0 e <= 39.9 obesidade
+	> 40.0 obesidade grave
+• Heart Rate: Frequência cardíaca
+	> 60 e < 100 normal
+• Glucose: Glicose
+	<= 99 normal
+	> 99 e <= 125 pré diabetico
+	> 125 diabetico
+• 10 year risk of coronary heart disease CHD (binary: “1”, means “Yes”, “0” means “No”)
