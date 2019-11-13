@@ -1,0 +1,547 @@
+{
+	"info": {
+		"_postman_id": "e64252dd-f762-455b-9081-2d22356fc002",
+		"name": "Documentação Biblioteca Flask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Access Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"tiago\",\r\n\t\"password\":\"123\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Pega token de acesso JWT."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Livros",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDMzMTYsImlhdCI6MTU3MzA0MzAxNiwibmJmIjoxNTczMDQzMDE2LCJpZGVudGl0eSI6MX0.I5kGbyhkhl3G1BEo_MschraTvAsGnJNUOYl2UiKBMPY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/livros",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livros"
+					]
+				},
+				"description": "Pega livros."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Livro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDMzMTYsImlhdCI6MTU3MzA0MzAxNiwibmJmIjoxNTczMDQzMDE2LCJpZGVudGl0eSI6MX0.I5kGbyhkhl3G1BEo_MschraTvAsGnJNUOYl2UiKBMPY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"1"
+					]
+				},
+				"description": "Pega livro."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Livro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDMzMTYsImlhdCI6MTU3MzA0MzAxNiwibmJmIjoxNTczMDQzMDE2LCJpZGVudGl0eSI6MX0.I5kGbyhkhl3G1BEo_MschraTvAsGnJNUOYl2UiKBMPY",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"teste\",\r\n    \"autor\":\"C.J.Tudor\",\r\n    \"genero\":\"Suspense\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"1"
+					]
+				},
+				"description": "Cria livro."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Livro",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM2MzUsImlhdCI6MTU3MzA0MzMzNSwibmJmIjoxNTczMDQzMzM1LCJpZGVudGl0eSI6MX0.FI54GUxTb15r56iXlnpFToEGr7OatZRRwju-VHifFmM",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"teste\",\r\n    \"autor\":\"C.J.Tudor\",\r\n    \"genero\":\"Suspense\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"1"
+					]
+				},
+				"description": "Atualiza livro."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Livro",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM2MzUsImlhdCI6MTU3MzA0MzMzNSwibmJmIjoxNTczMDQzMzM1LCJpZGVudGl0eSI6MX0.FI54GUxTb15r56iXlnpFToEGr7OatZRRwju-VHifFmM",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/livro/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"livro",
+						"1"
+					]
+				},
+				"description": "Deleta livro."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Clientes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM2MzUsImlhdCI6MTU3MzA0MzMzNSwibmJmIjoxNTczMDQzMzM1LCJpZGVudGl0eSI6MX0.FI54GUxTb15r56iXlnpFToEGr7OatZRRwju-VHifFmM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Pega clientes."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Cliente",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM2MzUsImlhdCI6MTU3MzA0MzMzNSwibmJmIjoxNTczMDQzMzM1LCJpZGVudGl0eSI6MX0.FI54GUxTb15r56iXlnpFToEGr7OatZRRwju-VHifFmM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/cliente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cliente",
+						"1"
+					]
+				},
+				"description": "Pega cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Cliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM4MjAsImlhdCI6MTU3MzA0MzUyMCwibmJmIjoxNTczMDQzNTIwLCJpZGVudGl0eSI6MX0.Wym0jPURhpp8-P6hfewy_GcgFjerXwmXFUDCYN2Ps-0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nome\":\"igor\",\r\n\t\"cpf\":\"123\",\r\n\t\"idade\":18,\r\n\t\"username\":\"igora\",\r\n\t\"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/cliente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cliente",
+						"1"
+					]
+				},
+				"description": "Cria cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Cliente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM4MjAsImlhdCI6MTU3MzA0MzUyMCwibmJmIjoxNTczMDQzNTIwLCJpZGVudGl0eSI6MX0.Wym0jPURhpp8-P6hfewy_GcgFjerXwmXFUDCYN2Ps-0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nome\":\"igor\",\r\n\t\"cpf\":\"123\",\r\n\t\"idade\":18,\r\n\t\"username\":\"igora\",\r\n\t\"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/cliente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cliente",
+						"1"
+					]
+				},
+				"description": "Atualiza cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDM4MjAsImlhdCI6MTU3MzA0MzUyMCwibmJmIjoxNTczMDQzNTIwLCJpZGVudGl0eSI6MX0.Wym0jPURhpp8-P6hfewy_GcgFjerXwmXFUDCYN2Ps-0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/cliente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cliente",
+						"1"
+					]
+				},
+				"description": "Deleta cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Alugueis",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDUwNjEsImlhdCI6MTU3MzA0NDc2MSwibmJmIjoxNTczMDQ0NzYxLCJpZGVudGl0eSI6Mn0.IRKqYK5JbgNDd91zAOQz_KucdPJoM_mEmQ32mA28dVc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/alugueis",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"alugueis"
+					]
+				},
+				"description": "Pega alugueis."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Aluguel",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDUwNjEsImlhdCI6MTU3MzA0NDc2MSwibmJmIjoxNTczMDQ0NzYxLCJpZGVudGl0eSI6Mn0.IRKqYK5JbgNDd91zAOQz_KucdPJoM_mEmQ32mA28dVc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/aluguel/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aluguel",
+						"1"
+					]
+				},
+				"description": "Pega aluguel."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Aluguel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDUwNjEsImlhdCI6MTU3MzA0NDc2MSwibmJmIjoxNTczMDQ0NzYxLCJpZGVudGl0eSI6Mn0.IRKqYK5JbgNDd91zAOQz_KucdPJoM_mEmQ32mA28dVc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id_cliente\":3,\r\n\t\"id_livro\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/aluguel/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aluguel",
+						"1"
+					]
+				},
+				"description": "Cria aluguel."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Aluguel",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDUwNjEsImlhdCI6MTU3MzA0NDc2MSwibmJmIjoxNTczMDQ0NzYxLCJpZGVudGl0eSI6Mn0.IRKqYK5JbgNDd91zAOQz_KucdPJoM_mEmQ32mA28dVc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id_cliente\":3,\r\n\t\"id_livro\":3,\r\n\t\"dia_devolucao\":\"2019-10-15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/aluguel/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aluguel",
+						"1"
+					]
+				},
+				"description": "Atualiza aluguel."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Aluguel",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzMwNDUwNjEsImlhdCI6MTU3MzA0NDc2MSwibmJmIjoxNTczMDQ0NzYxLCJpZGVudGl0eSI6Mn0.IRKqYK5JbgNDd91zAOQz_KucdPJoM_mEmQ32mA28dVc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/aluguel/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"aluguel",
+						"1"
+					]
+				},
+				"description": "Deleta aluguel."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
